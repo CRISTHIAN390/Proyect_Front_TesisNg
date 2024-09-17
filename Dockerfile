@@ -1,26 +1,27 @@
-# Use a base image of Node.js to build and run the project
-FROM node:20
+# Etapa de construcción
+# Usa una imagen base de Node.js para construir y ejecutar el proyecto
+FROM node:20.17-bullseye-slim
 
-# Set the working directory
+# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+# Instala Angular CLI globalmente con la versión especificada
+RUN yarn global add @angular/cli@18.0.6
 
-# Install Angular CLI
-RUN yarn install -g @angular/cli@18.0.0-next.3
+# Copia los archivos package.json y yarn.lock al directorio de trabajo
+COPY package.json yarn.lock ./
 
-# Install the application's dependencies
-RUN yarn install --legacy-peer-deps
+# Instala las dependencias del proyecto especificadas en package.json
+RUN yarn install
 
-# Fix vulnerabilities (optional)
-RUN yarn audit fix --force
+# (opcional)Ejecuta yarn audit fix para corregir problemas de seguridad en las dependencias
+RUN yarn audit fix
 
-# Copy the rest of the project files
+# Copia el resto de los archivos del proyecto al directorio de trabajo
 COPY . .
 
-# Expose the port that the Angular application will use
+# Expone el puerto 4200, que es el puerto por defecto para las aplicaciones Angular
 EXPOSE 4200
 
-# Default command to run the Angular application
+# Comando por defecto para ejecutar la aplicación Angular en modo desarrollo
 CMD ["ng", "serve", "--port", "4200", "--host", "0.0.0.0"]
