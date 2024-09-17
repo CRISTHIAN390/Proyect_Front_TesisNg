@@ -76,7 +76,7 @@ export const NavigationItems: NavigationItem[] = [
         type: 'item',
         classes: 'nav-item',
         url: '/typography',
-        icon: 'font-size'
+        icon: 'ant-design'
       },
       {
         id: 'color',
@@ -84,19 +84,37 @@ export const NavigationItems: NavigationItem[] = [
         type: 'item',
         classes: 'nav-item',
         url: '/color',
-        icon: 'bg-colors'
+        icon: 'ant-design'
       },
       {
-        id: 'color',
+        id: 'color2',
         title: 'Clientes',
         type: 'item',
         classes: 'nav-item',
-        url: '/color',
-        icon: 'bg-colors'
+        url: '/color2',
+        icon: 'ant-design'
       },
       {
+        id: 'color2',
+        title: 'Consultas',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/color3',
+        icon: 'ant-design'
+      },
+      {
+        id: 'color2',
+        title: 'Reportes',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/color4',
+        icon: 'ant-design'
+      },
+
+
+      {
         id: 'tabler',
-        title: 'Tabler',
+        title: 'Componentes',
         type: 'item',
         classes: 'nav-item',
         url: 'https://ant.design/components/icon',
