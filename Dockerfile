@@ -1,6 +1,6 @@
 # Etapa de construcción
 # Usa una imagen base de Node.js para construir y ejecutar el proyecto
-FROM node:20.17-bullseye-slim
+FROM node:20.17-slim
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -13,9 +13,6 @@ COPY package.json yarn.lock ./
 
 # Instala las dependencias del proyecto especificadas en package.json
 RUN yarn install
-
-# (opcional)Ejecuta yarn audit fix para corregir problemas de seguridad en las dependencias
-RUN yarn audit fix
 
 # Copia el resto de los archivos del proyecto al directorio de trabajo
 COPY . .
